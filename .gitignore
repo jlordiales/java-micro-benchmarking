@@ -1,6 +1,28 @@
 *.class
 
+#Ignore IDEA files 
+*.iml
+*.ipr
+*.iws
+target/
+.idea/
+
+#Eclipse files
+.project
+.classpath
+.settings
+
 # Package Files #
 *.jar
 *.war
 *.ear
+
+#Binary and Build Directories
+build/
+bin/
+target/
+.svn
+.gradle
+
+#Backup files
+*~
