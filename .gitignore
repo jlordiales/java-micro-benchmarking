@@ -12,11 +12,6 @@ target/
 .classpath
 .settings
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
 #Binary and Build Directories
 build/
 bin/
