@@ -20,6 +20,8 @@ import com.google.caliper.SimpleBenchmark;
 
 /**
  * What do various kinds of addition cost?
+ * The loop index is summed on each iteration to prevent
+ * the compiler from optimizing the code away
  */
 public class AdditionBenchmark extends SimpleBenchmark {
     public int timeAddConstantToLocalInt(int reps) {

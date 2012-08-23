@@ -25,6 +25,7 @@ import com.tallertechnologies.java_benchmarks.arrayIteration.Foo;
 
 /**
  * Is a hand-coded counted loop through an ArrayList cheaper than enhanced for?
+ * And how do those two compare to using an iterator?
  */
 public class ArrayListIterationBenchmark extends SimpleBenchmark {
     @Param({ "2", "20", "2000", "20000" })

@@ -2,6 +2,11 @@ package com.tallertechnologies.java_benchmarks.exceptions;
 
 import com.google.caliper.SimpleBenchmark;
 
+/**
+ * Measures the difference between putting code inside
+ * a try-catch block and not using try-catch at all
+ *
+ */
 public class ExceptionBenchmark extends SimpleBenchmark {
 
     private void isEven(int number) throws EvenException {

@@ -19,6 +19,11 @@ package com.tallertechnologies.java_benchmarks.arrayCopy;
 import com.google.caliper.Param;
 import com.google.caliper.SimpleBenchmark;
 
+/**
+ * Which is faster: copying an array manually or using the
+ * same funcionality provided in {@link System#arraycopy(Object, int, Object, int, int)}? 
+ *
+ */
 public class ArrayCopyBenchmark extends SimpleBenchmark {
     @Param({ "20", "200", "2000", "20000" })
     int arraySize;
