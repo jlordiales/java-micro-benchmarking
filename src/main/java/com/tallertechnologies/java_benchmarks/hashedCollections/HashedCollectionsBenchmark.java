@@ -28,55 +28,54 @@ import com.google.caliper.SimpleBenchmark;
  */
 public class HashedCollectionsBenchmark extends SimpleBenchmark {
 
-	private HashMap<String, String> map;
-	private Hashtable<String, String> mapTable;
-	private LinkedHashMap<String, String> mapLinked;
-	private ConcurrentHashMap<String, String> mapConcurrent;
+    private HashMap<String, String> map;
+    private Hashtable<String, String> mapTable;
+    private LinkedHashMap<String, String> mapLinked;
+    private ConcurrentHashMap<String, String> mapConcurrent;
 
-	@Override
-	protected void setUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.setUp();
-		map = new HashMap<String, String>();
-		mapTable = new Hashtable<String, String>();
-		mapLinked = new LinkedHashMap<String, String>();
-		mapConcurrent = new ConcurrentHashMap<String, String>();
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        map = new HashMap<String, String>();
+        mapTable = new Hashtable<String, String>();
+        mapLinked = new LinkedHashMap<String, String>();
+        mapConcurrent = new ConcurrentHashMap<String, String>();
 
-		map.put("hello", "world");
-		mapTable.put("hello", "world");
-		mapLinked.put("hello", "world");
-		mapConcurrent.put("hello", "world");
-	}
+        map.put("hello", "world");
+        mapTable.put("hello", "world");
+        mapLinked.put("hello", "world");
+        mapConcurrent.put("hello", "world");
+    }
 
-	public void timeHashMapGet(int reps) {
-		for (int i = 0; i < reps; ++i) {
-			map.get("hello");
-		}
-	}
+    public void timeHashMapGet(int reps) {
+        for (int i = 0; i < reps; ++i) {
+            map.get("hello");
+        }
+    }
 
-	public void timeHashMapGet_Synchronized(int reps) {
-		for (int i = 0; i < reps; ++i) {
-			synchronized (map) {
-				map.get("hello");
-			}
-		}
-	}
+    public void timeHashMapGet_Synchronized(int reps) {
+        for (int i = 0; i < reps; ++i) {
+            synchronized (map) {
+                map.get("hello");
+            }
+        }
+    }
 
-	public void timeHashtableGet(int reps) {
-		for (int i = 0; i < reps; ++i) {
-			mapTable.get("hello");
-		}
-	}
+    public void timeHashtableGet(int reps) {
+        for (int i = 0; i < reps; ++i) {
+            mapTable.get("hello");
+        }
+    }
 
-	public void timeLinkedHashMapGet(int reps) {
-		for (int i = 0; i < reps; ++i) {
-			mapLinked.get("hello");
-		}
-	}
+    public void timeLinkedHashMapGet(int reps) {
+        for (int i = 0; i < reps; ++i) {
+            mapLinked.get("hello");
+        }
+    }
 
-	public void timeConcurrentHashMapGet(int reps) {
-		for (int i = 0; i < reps; ++i) {
-			mapConcurrent.get("hello");
-		}
-	}
+    public void timeConcurrentHashMapGet(int reps) {
+        for (int i = 0; i < reps; ++i) {
+            mapConcurrent.get("hello");
+        }
+    }
 }

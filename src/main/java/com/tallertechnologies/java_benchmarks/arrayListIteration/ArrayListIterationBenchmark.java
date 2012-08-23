@@ -27,51 +27,48 @@ import com.tallertechnologies.java_benchmarks.arrayIteration.Foo;
  * Is a hand-coded counted loop through an ArrayList cheaper than enhanced for?
  */
 public class ArrayListIterationBenchmark extends SimpleBenchmark {
-	@Param({ "2", "20", "2000", "20000" })
-	int max;
-	ArrayList<Foo> mList = null;
+    @Param({ "2", "20", "2000", "20000" })
+    int max;
+    ArrayList<Foo> mList = null;
 
-	@Override
-	protected void setUp() throws Exception {
-		// TODO Auto-generated method stub
-		super.setUp();
-		mList = new ArrayList<Foo>();
-		for (int i = 0; i < max; ++i) {
-			mList.add(new Foo());
-		}
-	}
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        mList = new ArrayList<Foo>();
+        for (int i = 0; i < max; ++i) {
+            mList.add(new Foo());
+        }
+    }
 
-	public int timeArrayListIterationIndexed(int reps) {
-		int sum = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			sum = 0;
-			// ArrayList<Foo> list = mList;
-			// int len = list.size();
-			for (int i = 0; i < mList.size(); ++i) {
-				sum += mList.get(i).mSplat;
-			}
-		}
-		return sum;
-	}
+    public int timeArrayListIterationIndexed(int reps) {
+        int sum = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            sum = 0;
+            for (int i = 0; i < mList.size(); ++i) {
+                sum += mList.get(i).mSplat;
+            }
+        }
+        return sum;
+    }
 
-	public int timeArrayListIterationForEach(int reps) {
-		int sum = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			sum = 0;
-			for (final Foo a : mList) {
-				sum += a.mSplat;
-			}
-		}
-		return sum;
-	}
+    public int timeArrayListIterationForEach(int reps) {
+        int sum = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            sum = 0;
+            for (final Foo a : mList) {
+                sum += a.mSplat;
+            }
+        }
+        return sum;
+    }
 
-	public int timeIterator(int reps) {
-		int sum = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			for (final Iterator<Foo> it = mList.iterator(); it.hasNext();) {
-				sum += it.next().mSplat;
-			}
-		}
-		return sum;
-	}
+    public int timeIterator(int reps) {
+        int sum = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            for (final Iterator<Foo> it = mList.iterator(); it.hasNext();) {
+                sum += it.next().mSplat;
+            }
+        }
+        return sum;
+    }
 }

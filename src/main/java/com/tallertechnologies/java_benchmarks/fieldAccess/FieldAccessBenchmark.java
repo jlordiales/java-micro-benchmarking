@@ -23,92 +23,92 @@ import com.google.caliper.SimpleBenchmark;
  */
 public class FieldAccessBenchmark extends SimpleBenchmark {
 
-	private static class Inner {
-		public int publicInnerIntVal;
-		protected int protectedInnerIntVal;
-		private int privateInnerIntVal;
-		int packageInnerIntVal;
-	}
+    private static class Inner {
+        public int publicInnerIntVal=15;
+        protected int protectedInnerIntVal=15;
+        private int privateInnerIntVal=15;
+        int packageInnerIntVal=15;
+    }
 
-	int intVal = 42;
-	final int finalIntVal = 42;
-	static int staticIntVal = 42;
-	static final int staticFinalIntVal = 42;
+    int intVal = 15;
+    final int finalIntVal = 15;
+    static int staticIntVal = 15;
+    static final int staticFinalIntVal = 15;
 
-	public int timeField(int reps) {
-		int result = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			result = intVal;
-		}
-		return result;
-	}
+    public int timeField(int reps) {
+        int result = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            result += intVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldFinal(int reps) {
-		int result = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			result = finalIntVal;
-		}
-		return result;
-	}
+    public int timeFieldFinal(int reps) {
+        int result = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            result += finalIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldStatic(int reps) {
-		int result = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			result = staticIntVal;
-		}
-		return result;
-	}
+    public int timeFieldStatic(int reps) {
+        int result = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            result += staticIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldStaticFinal(int reps) {
-		int result = 0;
-		for (int rep = 0; rep < reps; ++rep) {
-			result = staticFinalIntVal;
-		}
-		return result;
-	}
+    public int timeFieldStaticFinal(int reps) {
+        int result = 0;
+        for (int rep = 0; rep < reps; ++rep) {
+            result += staticFinalIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldCached(int reps) {
-		int result = 0;
-		final int cachedIntVal = this.intVal;
-		for (int rep = 0; rep < reps; ++rep) {
-			result = cachedIntVal;
-		}
-		return result;
-	}
+    public int timeFieldCached(int reps) {
+        int result = 0;
+        final int cachedIntVal = this.intVal;
+        for (int rep = 0; rep < reps; ++rep) {
+            result += cachedIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldPrivateInnerClassPublicField(int reps) {
-		int result = 0;
-		final Inner inner = new Inner();
-		for (int rep = 0; rep < reps; ++rep) {
-			result = inner.publicInnerIntVal;
-		}
-		return result;
-	}
+    public int timeFieldPrivateInnerClassPublicField(int reps) {
+        int result = 0;
+        final Inner inner = new Inner();
+        for (int rep = 0; rep < reps; ++rep) {
+            result += inner.publicInnerIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldPrivateInnerClassProtectedField(int reps) {
-		int result = 0;
-		final Inner inner = new Inner();
-		for (int rep = 0; rep < reps; ++rep) {
-			result = inner.protectedInnerIntVal;
-		}
-		return result;
-	}
+    public int timeFieldPrivateInnerClassProtectedField(int reps) {
+        int result = 0;
+        final Inner inner = new Inner();
+        for (int rep = 0; rep < reps; ++rep) {
+            result += inner.protectedInnerIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldPrivateInnerClassPrivateField(int reps) {
-		int result = 0;
-		final Inner inner = new Inner();
-		for (int rep = 0; rep < reps; ++rep) {
-			result = inner.privateInnerIntVal;
-		}
-		return result;
-	}
+    public int timeFieldPrivateInnerClassPrivateField(int reps) {
+        int result = 0;
+        final Inner inner = new Inner();
+        for (int rep = 0; rep < reps; ++rep) {
+            result += inner.privateInnerIntVal + rep;
+        }
+        return result;
+    }
 
-	public int timeFieldPrivateInnerClassPackageField(int reps) {
-		int result = 0;
-		final Inner inner = new Inner();
-		for (int rep = 0; rep < reps; ++rep) {
-			result = inner.packageInnerIntVal;
-		}
-		return result;
-	}
+    public int timeFieldPrivateInnerClassPackageField(int reps) {
+        int result = 0;
+        final Inner inner = new Inner();
+        for (int rep = 0; rep < reps; ++rep) {
+            result += inner.packageInnerIntVal + rep;
+        }
+        return result;
+    }
 }

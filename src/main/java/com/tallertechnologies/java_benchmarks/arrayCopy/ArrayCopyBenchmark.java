@@ -16,24 +16,33 @@
 
 package com.tallertechnologies.java_benchmarks.arrayCopy;
 
+import com.google.caliper.Param;
 import com.google.caliper.SimpleBenchmark;
 
 public class ArrayCopyBenchmark extends SimpleBenchmark {
-	public void timeManualArrayCopy(int reps) {
-		final char[] src = new char[8192];
-		for (int rep = 0; rep < reps; ++rep) {
-			final char[] dst = new char[8192];
-			for (int i = 0; i < 8192; ++i) {
-				dst[i] = src[i];
-			}
-		}
-	}
+    @Param({ "20", "200", "2000", "20000" })
+    int arraySize;
+    char[] src;
 
-	public void time_System_arrayCopy(int reps) {
-		final char[] src = new char[8192];
-		for (int rep = 0; rep < reps; ++rep) {
-			final char[] dst = new char[8192];
-			System.arraycopy(src, 0, dst, 0, 8192);
-		}
-	}
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        src = new char[arraySize];
+    }
+
+    public void timeManualArrayCopy(int reps) {
+        for (int rep = 0; rep < reps; ++rep) {
+            final char[] dst = new char[arraySize];
+            for (int i = 0; i < arraySize; ++i) {
+                dst[i] = src[i];
+            }
+        }
+    }
+
+    public void timeSystemArrayCopy(int reps) {
+        for (int rep = 0; rep < reps; ++rep) {
+            final char[] dst = new char[arraySize];
+            System.arraycopy(src, 0, dst, 0, arraySize);
+        }
+    }
 }

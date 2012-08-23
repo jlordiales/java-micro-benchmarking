@@ -19,43 +19,33 @@ package com.tallertechnologies.java_benchmarks.stringEmpty;
 import com.google.caliper.SimpleBenchmark;
 
 public class StringIsEmptyBenchmark extends SimpleBenchmark {
-	public void timeIsEmpty_NonEmpty(int reps) {
-		boolean result = true;
-		for (int i = 0; i < reps; ++i) {
-			result &= !"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx".isEmpty();
-		}
-		if (!result) {
-			throw new RuntimeException();
-		}
-	}
+    public void timeIsEmpty_NonEmpty(int reps) {
+        boolean result = true;
+        for (int i = 0; i < reps; ++i) {
+            result &= !(String.valueOf(i).isEmpty());
+        }
+        if (!result) {
+            throw new RuntimeException();
+        }
+    }
 
-	public void timeIsEmpty_Empty(int reps) {
-		boolean result = true;
-		for (int i = 0; i < reps; ++i) {
-			result &= "".isEmpty();
-		}
-		if (!result) {
-			throw new RuntimeException();
-		}
-	}
+    public void timeLengthEqualsZero(int reps) {
+        boolean result = true;
+        for (int i = 0; i < reps; ++i) {
+            result &= !(String.valueOf(i).length() == 0);
+        }
+        if (!result) {
+            throw new RuntimeException();
+        }
+    }
 
-	public void timeLengthEqualsZero(int reps) {
-		boolean result = true;
-		for (int i = 0; i < reps; ++i) {
-			result &= !("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx".length() == 0);
-		}
-		if (!result) {
-			throw new RuntimeException();
-		}
-	}
-
-	public void timeEqualsEmpty(int reps) {
-		boolean result = true;
-		for (int i = 0; i < reps; ++i) {
-			result &= !"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx".equals("");
-		}
-		if (!result) {
-			throw new RuntimeException();
-		}
-	}
+    public void timeEqualsEmpty(int reps) {
+        boolean result = true;
+        for (int i = 0; i < reps; ++i) {
+            result &= !(String.valueOf(i).equals(""));
+        }
+        if (!result) {
+            throw new RuntimeException();
+        }
+    }
 }

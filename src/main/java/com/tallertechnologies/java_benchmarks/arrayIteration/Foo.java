@@ -20,5 +20,5 @@ package com.tallertechnologies.java_benchmarks.arrayIteration;
  * A trivial class used by several benchmarks.
  */
 public class Foo {
-	public int mSplat;
+    public int mSplat;
 }

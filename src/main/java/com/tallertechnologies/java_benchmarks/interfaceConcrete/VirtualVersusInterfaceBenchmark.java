@@ -26,17 +26,17 @@ import com.google.caliper.SimpleBenchmark;
  * Android documentation once claimed?
  */
 public class VirtualVersusInterfaceBenchmark extends SimpleBenchmark {
-	public void timeMapPut(int reps) {
-		final Map<String, String> map = new HashMap<String, String>();
-		for (int i = 0; i < reps; ++i) {
-			map.put("hello", "world");
-		}
-	}
+    public void timeMapPut(int reps) {
+        final Map<String, String> map = new HashMap<String, String>();
+        for (int i = 0; i < reps; ++i) {
+            map.put("hello", "world");
+        }
+    }
 
-	public void timeHashMapPut(int reps) {
-		final HashMap<String, String> map = new HashMap<String, String>();
-		for (int i = 0; i < reps; ++i) {
-			map.put("hello", "world");
-		}
-	}
+    public void timeHashMapPut(int reps) {
+        final HashMap<String, String> map = new HashMap<String, String>();
+        for (int i = 0; i < reps; ++i) {
+            map.put("hello", "world");
+        }
+    }
 }
