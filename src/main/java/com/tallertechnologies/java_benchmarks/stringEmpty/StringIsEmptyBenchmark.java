@@ -16,33 +16,37 @@
 
 package com.tallertechnologies.java_benchmarks.stringEmpty;
 
+import com.google.caliper.Param;
 import com.google.caliper.SimpleBenchmark;
 
 public class StringIsEmptyBenchmark extends SimpleBenchmark {
-    public void timeIsEmpty_NonEmpty(int reps) {
-        boolean result = true;
-        for (int i = 0; i < reps; ++i) {
-            result &= !(String.valueOf(i).isEmpty());
-        }
-        if (!result) {
-            throw new RuntimeException();
-        }
+    @Param
+    Method method;
+    
+    public enum Method {
+        IS_EMPTY {
+            @Override
+            boolean empty(String s) {
+                return s.isEmpty();
+            }
+        },LENGTH_ZERO {
+            @Override
+            boolean empty(String s) {
+                return s.length() == 0;
+            }
+        },EQUALS_EMPTY {
+            @Override
+            boolean empty(String s) {
+                return "".equals(s);
+            }
+        };        
+        abstract boolean empty(String s);
     }
-
-    public void timeLengthEqualsZero(int reps) {
+    
+    public void timeEmpty(int reps) {
         boolean result = true;
         for (int i = 0; i < reps; ++i) {
-            result &= !(String.valueOf(i).length() == 0);
-        }
-        if (!result) {
-            throw new RuntimeException();
-        }
-    }
-
-    public void timeEqualsEmpty(int reps) {
-        boolean result = true;
-        for (int i = 0; i < reps; ++i) {
-            result &= !(String.valueOf(i).equals(""));
+            result &= !(method.empty(String.valueOf(i)));
         }
         if (!result) {
             throw new RuntimeException();
